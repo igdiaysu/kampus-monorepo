@@ -1,105 +1,106 @@
-### Introduction
+---
+title: "SVG'ler"
+---
 
-SVGs are a very common image format on the web. They can be a little confusing at first, but once you know how to use them, they are an incredibly powerful tool for creating high-quality, dynamic images for your website.
+### Giriş
 
-In this lesson, we will learn exactly what SVGs are, what they're used for, and how you can embed them in your websites.
+SVG'ler web üzerinde yaygın bir görüntü formatıdır. İlk başta biraz kafa karıştırıcı olabilir, ancak nasıl kullanılacağını bildikten sonra, web siteniz için yüksek kaliteli, dinamik görüntüler oluşturmak için son derece güçlü bir araçtır.
 
-### Learning outcomes
+Bu derste SVG'lerin tam olarak ne olduğunu, ne için kullanıldığını ve web sitelerinize nasıl gömebileceğinizi öğreneceğiz.
 
--   What SVGs, Vector Graphics, and XML are
--   How to create simple SVGs and add them to your websites
--   When to use SVGs, and when a different image format would be more appropriate
+### Derse genel bakış
 
-### What are SVGs?
+Bu bölüm, bu derste öğreneceğiniz konuların genel bir özetini içerir.
 
-SVGs are a _scalable_ image format, which means they will easily scale to any size and retain their quality without increasing their filesize. They're also very useful if you need to create or modify your images programmatically, because you can change their properties through CSS and JavaScript.
+- SVG'ler, Vektör Grafikleri ve XML nedir?
+- Basit SVG'ler nasıl oluşturulur ve web sitenize nasıl eklenir?
+- SVG'ler ne zaman kullanılmalı ve ne zaman farklı bir görüntü formatı kullanmak daha uygun olacaktır?
 
-SVGs are often used for:
+### SVG'ler nedir?
 
-1.  Icons
-2.  Graphs/Charts
-3.  Large, simple images
-4.  Patterned backgrounds
-5.  Applying effects to other elements via SVG filters
+SVG'ler, boyutları kolayca *ölçeklenebilen* bir görüntü formatıdır, bu da onların kalitesini artırmadan herhangi bir boyuta kolayca ölçeklenebileceği anlamına gelir. Ayrıca, CSS ve JavaScript aracılığıyla özelliklerini değiştirebileceğiniz için programatik olarak görüntüler oluşturmanız veya değiştirmeniz gerekiyorsa çok kullanışlıdır.
 
-### Okay, but what are they?
+SVG'ler genellikle şu amaçlar için kullanılır:
 
-"SVG" stands for "Scalable Vector Graphics". Vector graphics are simply images defined by math, as opposed to traditional "raster graphics", where your image is defined by a grid of pixels. With raster graphics, the detail is limited to the size of that pixel grid. If you want to increase the size of the image (_scale_ it), you have to increase the size of that grid. How do you decide what all those new pixels should look like? There's no simple solution. Additionally, the larger the grid, the bigger your filesize grows.
+1. İkonlar
+1. Grafikler/Çizelgeler
+1. Büyük, basit görüntüler
+1. Desenli arka planlar
+1. Diğer öğelere SVG filtreleri aracılığıyla efektler uygulama
 
-With vector graphics on the other hand, there's no grid. Instead, you have formulas for different shapes and lines. Since these are just formulas, it doesn't matter how large or small you want them to appear--they can scale to any size you want, and it will have no effect on the quality or the size of the file.
+### Tamam, ama bunlar nedir?
 
-SVGs have another interesting aspect to them: they're defined using XML. XML (aka, "Extensible Markup Language") is an HTML-like syntax which is used for lots of things, from [APIs](https://en.wikipedia.org/wiki/API), to [RSS](https://en.wikipedia.org/wiki/RSS), to [spreadsheet and word editor software](https://en.wikipedia.org/wiki/Office_Open_XML).
 
-The fact that SVG source-code is XML has a few key benefits.
+"SVG", "Scalable Vector Graphics(Ölçeklenebilen Vektör Grafikleri)" kelimelerinin kısaltmasıdır. Vektör grafikleri, görüntünüzün bir piksel ızgarasıyla tanımlandığı geleneksel “raster grafiklerinin” aksine, basitçe matematikle tanımlanan görüntülerdir. Raster grafiklerde ayrıntılar bu piksel ızgarasının boyutuyla sınırlıdır. Görüntünün boyutunu artırmak (*ölçeklendirmek*) istiyorsanız, bu ızgaranın boyutunu artırmanız gerekir. Tüm bu yeni piksellerin neye benzemesi gerektiğine nasıl karar verirsiniz? Bunun basit bir çözümü yok. Ayrıca, ızgara ne kadar büyük olursa, dosya boyutunuz da o kadar büyür.
 
-First, it means that it is _human-readable_. If you were to open up a JPEG in a text editor, it would just look like gobbledygook. If you were to open up an SVG, however, it would look something like this:
+Öte yandan, vektör grafiklerinde bir ızgara bulunmaz. Bunun yerine, farklı şekil ve çizgiler için matematiksel formüller vardır. Bu formüller sadece matematiksel ifadeler olduğu için, bunları istediğiniz büyüklükte veya küçüklükte kullanabilirsiniz. Bu durum, kalite veya dosya boyutu üzerinde herhangi bir etki yapmaz.
 
-```xml
+SVGs'ın başka ilginç bir yönü daha vardır: XML kullanılarak tanımlanırlar. XML(Extensible Markup Language olarak da bilinir), bir HTML benzeri sözdizimidir ve [API's](https://en.wikipedia.org/wiki/API)'den [RSS](https://en.wikipedia.org/wiki/RSS)'e, [spreadsheet and word editor software](https://en.wikipedia.org/wiki/Office_Open_XML) kadar birçok alanda kullanılır.
+
+SVG kaynak kodunun XML olması birkaç önemli avantaja sahiptir.
+
+İlk olarak, bu, *insan tarafından okunabilir(human-readable)* olduğu anlamına gelir. Eğer bir JPEG dosyasını bir metin düzenleyicide açarsanız, anlamsız karakterlerle dolu bir şey göreceksiniz. Ancak bir SVG dosyasını açarsanız, şöyle bir şey göreceksiniz:
+
+```html
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
     <rect x=0 y=0 width=100 height=50 />
     <circle class="svg-circle" cx="50" cy="50" r="10"/>
 </svg>
 ```
 
-It might still be confusing, but hey--those are words! Tags! Attributes! Compared to [binary file formats](https://en.wikipedia.org/wiki/Binary_file) like JPEG, we're definitely in familiar territory.
+Hâlâ kafa karıştırıcı olabilir, ama işte orada kelimeler var! Etiketler! Nitelikler! JPEG gibi [binary file formats](https://en.wikipedia.org/wiki/Binary_file) ile karşılaştırıldığında, kesinlikle tanıdık bir alandayız.
 
-The second benefit of XML is that it's designed to be interoperable with HTML, which means you can put the above code directly in an HTML file, without any changes, and it should display the image. And because these can become elements in the DOM just like HTML elements, you can target them with CSS and create them using the [Element WebAPI](https://developer.mozilla.org/en-US/docs/Web/API/Element) you've already been using!
+İkinci avantajı ise XML'in HTML ile etkileşimli olacak şekilde tasarlanmış olmasıdır. Bu, yukarıdaki kodu herhangi bir değişiklik yapmadan doğrudan bir HTML dosyasına yerleştirebileceğiniz ve görüntünün görüntülenmesi gerektiği anlamına gelir. Ve çünkü bunlar HTML öğeleri gibi DOM'da öğe haline gelebilir, CSS ile hedef alabilir ve zaten kullandığınız [Element WebAPI](https://developer.mozilla.org/en-US/docs/Web/API/Element) ile oluşturabilirsiniz!
 
-### Drawbacks
+### Dezavantajları
 
-So, clearly SVGs are awesome! Time to go convert all of our images to SVG, right? Well, not quite. SVGs are _great_ for relatively simple images, but because every single detail of the image needs to be written out as XML, they are extremely inefficient at storing complex images. If your image is supposed to be photo-realistic, or it has fine detail or texture ("[grunge textures](https://unsplash.com/s/photos/grunge-texture)" are a great example), then SVGs are the wrong tool for the job.
+Öyleyse, açıkça SVG'ler harika! Şimdi tüm görüntülerimizi SVG'ye dönüştürmeye mi gidiyoruz? Peki, tam olarak değil. SVG'ler, nispeten basit görüntüler için *harika* olsa da, görüntünün her ayrıntısının XML olarak yazılması gerektiği için karmaşık görüntülerin depolanması konusunda son derece verimsizdir. Eğer görüntünüz fotoğraf gerçekçiliğinde olmalı veya ince detaya veya dokuya sahip olmalıysa ("[grunge textures](https://unsplash.com/s/photos/grunge-texture)" harika bir örnek), o zaman SVG'ler iş için yanlış araçtır.
 
-### Anatomy of an SVG
+### SVG'nin anatomisi
 
-Typically, you will not want to create SVGs from scratch in your code. Most often, you will download the file or copy the code either from a website or from an image editor that can create them (Adobe Illustrator and Figma are two popular apps that can create SVGs). However, it's pretty common to download an SVG and want to tweak or adjust it just a little bit, so knowing what all the bits and pieces are, and how they work is very useful.
+Genellikle, SVG'leri kodunuzda sıfırdan oluşturmak istemeyeceksiniz. Çoğunlukla, dosyayı bir web sitesinden veya SVG oluşturabilen bir görüntü editöründen kopyalarsınız (Adobe Illustrator ve Figma, SVG oluşturabilen bunun için iki popüler uygulamadır). Ancak, genellikle bir SVG'yi indirirken biraz düzenleme veya ayarlama yapmak isteyebilirsiniz, bu nedenle tüm parçaların ne olduğunu ve nasıl çalıştığını bilmek oldukça faydalıdır.
 
 <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="NWaGdmL" data-editable="true" data-user="TheOdinProjectExamples" style={{"height":"300px","boxSizing":"border-box","display":"flex","alignItems":"center","justifyContent":"center","border":"2px solid","margin":"1em 0","padding":"1em"}}>
-  <span>See the Pen <a href="https://codepen.io/TheOdinProjectExamples/pen/NWaGdmL">
-  Simple SVG Example</a> by TheOdinProject (<a href="https://codepen.io/TheOdinProjectExamples">@TheOdinProjectExamples</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
+<span><a href="https://codepen.io">CodePen</a>'deki TheOdinProject(<a href="https://codepen.io/TheOdinProjectExamples">@TheOdinProjectExamples</a>) tarafından yapılmış olan <a href="https://codepen.io/TheOdinProjectExamples/pen/NWaGdmL">Basit SVG Örneğine</a>bakınız</span>
+
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-1.  `xmlns` - stands for "XML NameSpace". This specifies what _dialect_ of XML you're using. In our case, that dialect is the SVG language spec. Without it, some browsers will not render your image or will render it incorrectly. If you're interested in a full breakdown of what this attribute is and why it's necessary, check out [this excellent MDN article](https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course).
-2.  `viewBox` - defines the bounds of your SVG. When you have to define the positions of different points of the elements in your SVG, this is what that's referencing. It also defines the aspect ratio _and_ the origin of your SVG. So it's doing quite a lot! Be sure to play around with different values in the example above to get a feel for how it affects the shapes.
-3.  `class`, `id` - these attributes function just like they do in HTML. Using these in SVGs allows you to easily target an element via CSS or JavaScript, or to reuse an element via the [`use` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use).
-4.  Elements such as `<circle>`, `<rect>`, `<path>`, and `<text>` are defined by the SVG namespace. These are our basic building-blocks. Although you can make extremely complex images with SVG, they are mostly created with just a dozen or so of these basic elements. You can see a complete list of SVG elements [here](https://developer.mozilla.org/en-US/docs/Web/SVG/Element).
-5.  Many SVG attributes, such as `fill` and `stroke`, can be [changed in your CSS](https://css-tricks.com/svg-properties-and-css/).
+1. `xmlns` - "XML NameSpace" kısaltmasıdır. Bu, kullandığınız XML dilinin hangi *lehçe* olduğunu belirtir. Bizim durumumuzda, bu lehçe SVG dil spesifikasyonudur. Bu olmadan, bazı tarayıcılar görüntünüzü render etmeyebilir veya yanlış render edebilir. 
+1. `viewBox` - SVG'nizin sınırlarını tanımlar. SVG'nizdeki öğelerin farklı noktalarının konumlarını tanımlamanız gerektiğinde, bu değerlere başvurulan yer burasıdır. Ayrıca, SVG'nin en/boy oranını *ve* orijinini de tanımlar. Yani oldukça önemli bir rolü vardır! Şekiller üzerindeki etkilerini anlamak için yukarıdaki örnekte farklı değerlerle oynamayı deneyin.
+1. `class`, `id` - Bu özellikler HTML'deki gibi çalışır. Bunları SVG'lerde kullanmak, bir öğeyi CSS veya JavaScript ile kolayca hedeflemenize veya bir öğeyi [`use` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use) ile yeniden kullanmanıza olanak tanır.
+1.`<circle>`, `<rect>`, `<path>`, ve `<text>` gibi öğeler SVG ad alanı tarafından tanımlanır. Bunlar temel yapı taşlarımızdır. SVG ile son derece karmaşık görüntüler oluşturabilirsiniz, ancak bunlar genellikle sadece bir düzine veya daha az sayıda temel öğe kullanılarak oluşturulur. SVG öğelerinin tam listesini [burada](https://developer.mozilla.org/en-US/docs/Web/SVG/Element) görebilirsiniz.
+1. Birçok SVG özelliği, örneğin `fill` ve `stroke` CSS dosyanızda değiştirilebilir. [SVG özellikleri ve CSS hakkında bu makaleye göz atın](https://css-tricks.com/svg-properties-and-css/).
 
-Play around with the code above and try to get a feel for what's happening. What happens when you change the viewBox dimensions? Or the attributes of an element?
+Yukarıdaki kodla oynayın ve neler olduğunu anlamaya çalışın. viewBox boyutlarını değiştirdiğinizde veya bir öğenin niteliklerini değiştirdiğinizde neler olur?
 
-### Embedding SVGs
+### SVG'leri Gömmek
 
-There are two main approaches when deciding how to actually place the SVG in your document: linked, and inline.
+SVG'yi belgenize nasıl yerleştireceğinizi kararlaştırırken iki temel yaklaşım vardır: bağlantılı ve satır içi(inline).
 
-Linking SVGs works basically the same way as linking any other image. You can use an HTML image element such as `<img>`, or link it in your CSS using `background-image: url(./my-image.svg)`. They will still scale properly, but the contents of the SVG will not be accessible from the webpage.
+SVG'leri bağlamak, temelde diğer herhangi bir görüntüyü bağlamak gibi çalışır. `<img>` gibi bir HTML görüntü öğesi kullanabilir veya CSS'nizde `background-image: url(./my-image.svg)` kullanarak bağlantı kurabilirsiniz. Hâlâ doğru bir şekilde ölçeklenirler, ancak SVG içeriği web sayfasından erişilemez.
 
-The alternative is to inline your SVGs by pasting their contents directly into your webpage's code, rather than linking to it as an image. It will still render correctly, but the SVG's properties will be visible to your code, which will allow you to alter the image dynamically via CSS or JavaScript.
+Alternatif olarak, SVG'lerinize görüntü olarak bağlantı vermek yerine, içeriklerini doğrudan web sayfanızın koduna yapıştırarak SVG'lerinizi satır içi yapmaktır. Yine doğru şekilde oluşturulacaktır, ancak SVG'nin özellikleri kodunuz tarafından görülebilecek ve bu da görüntüyü CSS veya JavaScript aracılığıyla dinamik olarak değiştirme imkanı sağlayacaktır.
 
-Inlining SVGs allows you to unlock their full potential, but it also comes with some serious drawbacks: it makes your code harder to read, makes your page less cacheable, and if it's a large SVG it might delay the rest of your HTML from loading.
+SVG'leri satır içine almak tüm potansiyellerini ortaya çıkarmanızı sağlar, ancak bazı ciddi dezavantajları da vardır: kodunuzun okunmasını zorlaştırır, sayfanızı daha az önbelleğe alınabilir hale getirir ve büyük bir SVG ise HTML'nizin geri kalanının yüklenmesini geciktirebilir.
 
-Some of the drawbacks of inlining SVG code can be avoided once you've learned a front-end JavaScript library like React, or a build-tool like webpack. We aren't quite ready to get into those yet, so just keep that in the back of your mind.
+React gibi bir ön yüz JavaScript kütüphanesi veya webpack gibi bir derleme aracı öğrendiğinizde SVG kodunu satır içine almanın bazı dezavantajlarından kaçınılabilir. Henüz bu konulara girmeye hazır değiliz, bu yüzden bunu aklınızın bir köşesinde tutun.
 
-For now, just do whichever works best for your use-case. Linking is generally cleaner and simpler, so prefer that unless you need to tweak the SVG code alongside your HTML.
+Şu anda, kullanım durumunuza en iyi uyanı yapın. Bağlamak genellikle daha temiz ve daha basittir, bu nedenle HTML'nizle birlikte SVG kodunu ayarlamaya ihtiyacınız yoksa bunu tercih edin.
 
-### Knowledge check
+### Bilgi ölçme
 
-This section contains questions for you to check your understanding of this lesson on your own. If you’re having trouble answering a question, click it and review the material it links to.
+Aşağıdaki sorular, bu dersteki temel konular üzerinde tekrar düşünmek için bir fırsattır. Bir soruyu yanıtlayamazsanız, materyali gözden geçirmek için üzerine tıklayın, ancak bu bilgiyi ezberlemenizin veya ustalaşmanızın beklenmediğini unutmayın.
 
--   [What is the `xmlns` attribute?](#anatomy-of-an-svg)
--   [What are some situations where you _wouldn't_ want to use SVG?](#drawbacks)
--   [What are the benefits of "inlining" your SVGs? What are the drawbacks?](#embedding-svgs)
+-  [What is the `xmlns` attribute?](#svgnin-anatomisi)
+-  [What are some situations where you *wouldn't* want to use SVG?](#dezavantajları)
+-  [What are the benefits of "inlining" your SVGs? What are the drawbacks?](#svgleri-gömmek)
 
-### Additional resources
+### Ek kaynaklar
 
-This section contains helpful links to related content. It isn’t required, so consider it supplemental.
+Bu alanda içerikle alakalı faydalı linkler bulunmaktadır. Zorunlu değildir, ek olarak düşünülmelidir.
 
-1.  There are lots of great free SVG icon libraries. A few worth checking out: [Material icons](https://fonts.google.com/icons), [Feather icons](https://feathericons.com/), [The Noun Project](https://thenounproject.com/term/free/), and [Ionicons](https://ionic.io/ionicons).
-2.  If you want a deep-dive into the details of SVGs and their elements, the [MDN tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial) is a great place to start.
-3.  If you want to get started making your own SVGs, you'll want some sort of visual editor.
-    1.  [This is a great little SVG editor](https://yqnn.github.io/svg-path-editor) for learning how the SVG markup works. It not only shows the XML, but also lets you see the "commands" you're using to generate the SVG. This website isn't really designed for making complex graphics, though.
-    2.  For that, an excellent option is [Inkscape](https://inkscape.org/), which is not only free but open source!
-    3.  And if you're really invested in creating your own SVGs, you might want to check out some of the powerful paid options out there, such as [Affinity Designer](https://affinity.serif.com/designer/).
-4.  If you want to use SVGs to generate images programmatically, there are at least two major, modern libraries for that: [snap.svg](http://snapsvg.io/) and [SVG.js](https://svgjs.dev/docs/3.0/).
-5.  For data visualization, [d3](https://d3js.org/) has been the standard for many, many years.
-6.  If you're interested in some of the more advanced things you can do with SVGs, check out [this video on SVG animation](https://www.youtube.com/watch?v=UTHgr6NLeEw), and this article on [SVG Filters, and Why They're Awesome](https://www.smashingmagazine.com/2015/05/why-the-svg-filter-is-awesome/)!
+- SVG ikonları için birçok ücretsiz kütüphaneler vardır. Göz atmaya değer olanlar: [Material icons](https://fonts.google.com/icons), [Feather icons](https://feathericons.com/)
+
+- Kendi SVG'lerinizi oluşturmaya veya SVG'leri düzenlemeye başlamak istiyorsanız, [Yann Armelin'in SVG editörü](https://yqnn.github.io/svg-path-editor) gibi bir tür görsel düzenleyiciye ihtiyacınız olacaktır. Daha basit SVG'lerle uğraşmak için harikadır ancak karmaşık grafikler için tasarlanmamıştır.
+    
